@@ -6,35 +6,39 @@
 
 <generatorConfiguration>
     <!-- 引入配置文件 -->
-    <properties resource="application.properties"/>
+    <properties resource="generator.properties"/>
 
     <!-- 一个数据库一个context,context的子元素必须按照它给出的顺序
         property*,plugin*,commentGenerator?,jdbcConnection,javaTypeResolver?,
         javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table+
     -->
     <context id="myContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!--        设置生成文件的编码-->
         <property name="javaFileEncoding" value="UTF-8"/>
+
         <!-- 这个插件给生成的Java模型对象增加了equals和hashCode方法 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <!--        增加 toString 方法-->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--        生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
         <!-- 注释 -->
         <commentGenerator>
-            <!-- 是否不生成注释 -->
+            <!-- 是否生成注释 true： 否： false: 是 -->
             <property name="suppressAllComments" value="true"/>
-            <!-- 不希望生成的注释中包含时间戳 -->
-            <property name="suppressDate" value="false"/>
-            <!-- 添加 db 表中字段的注释，只有suppressAllComments为false时才生效-->
-<!--            <property name="addRemarkComments" value="true"/>-->
+            <!-- 是否去除时间戳 true：是 ： false:否 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 是否添加数据库表中字段的注释 true：是 ： false:否，只有当suppressAllComments 为 false 时才能生效 -->
+            <property name="addRemarkComments" value="true"/>
         </commentGenerator>
 
 
         <!-- jdbc连接 -->
-        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
-                        connectionURL="${spring.datasource.url}"
-                        userId="${spring.datasource.username}"
-                        password="${spring.datasource.password}">
+        <jdbcConnection driverClass="${jdbc.driver-class-name}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
             <!--高版本的 mysql-connector-java 需要设置 nullCatalogMeansCurrent=true-->
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
@@ -45,7 +49,7 @@
                 false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
                 true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal-->
             <property name="forceBigDecimals" value="true"/>
-            <!--默认false
+            <!--默认 false
                 false，将所有 JDBC 的时间类型解析为 java.util.Date
                 true，将 JDBC 的时间类型按如下规则解析
                     DATE	                -> java.time.LocalDate
@@ -54,13 +58,13 @@
                     TIME_WITH_TIMEZONE  	-> java.time.OffsetTime
                     TIMESTAMP_WITH_TIMEZONE	-> java.time.OffsetDateTime
                 -->
-            <!--<property name="useJSR310Types" value="false"/>-->
+            <property name="useJSR310Types" value="false"/>
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
         <javaModelGenerator targetPackage="com.cunyu1943.mybatisgeneratordemo.entity" targetProject="src/main/java">
             <!-- 是否让 schema 作为包的后缀，默认为false -->
-            <!--<property name="enableSubPackages" value="false"/>-->
+            <property name="enableSubPackages" value="false"/>
             <!-- 是否针对string类型的字段在set方法中进行修剪，默认false -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -68,12 +72,11 @@
 
         <!-- 生成Mapper.xml文件 -->
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
-            <!--<property name="enableSubPackages" value="false"/>-->
         </sqlMapGenerator>
 
         <!-- 生成 XxxMapper.java 接口-->
-        <javaClientGenerator targetPackage="com.cunyu1943.mybatisgeneratordemo.mapper" targetProject="src/main/java" type="XMLMAPPER">
-            <!--<property name="enableSubPackages" value="false"/>-->
+        <javaClientGenerator targetPackage="com.cunyu1943.mybatisgeneratordemo.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER">
         </javaClientGenerator>
 
 
@@ -86,7 +89,7 @@
                enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" selectByExampleQueryId="false">
             <!--是否使用实际列名,默认为false-->
-            <!--<property name="useActualColumnNames" value="false" />-->
+            <property name="useActualColumnNames" value="false"/>
         </table>
     </context>
 </generatorConfiguration>
