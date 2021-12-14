@@ -74,8 +74,15 @@
                     <!--                允许覆盖生成的文件-->
                     <overwrite>true</overwrite>
                     <!--                    将当前 pom 中的依赖项添加到生成器路径中-->
-                    <includeCompileDependencies>true</includeCompileDependencies>
+<!--                    <includeCompileDependencies>true</includeCompileDependencies>-->
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.17</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

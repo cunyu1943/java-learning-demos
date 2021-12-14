@@ -12,10 +12,12 @@
         property*,plugin*,commentGenerator?,jdbcConnection,javaTypeResolver?,
         javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table+
     -->
-    <context id="myContext" targetRuntime="MyBatis3" defaultModelType="flat">
-
+    <context id="myContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 这个插件给生成的Java模型对象增加了equals和hashCode方法 -->
-        <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
         <!-- 注释 -->
         <commentGenerator>
