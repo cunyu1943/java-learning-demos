@@ -35,7 +35,7 @@ public class SwaggerDemoController {
 
     @ApiOperation(value = "有参接口")
     @PostMapping("demo")
-    public String demo(@ApiParam(name = "name", value = "村雨遥", required = true) @RequestBody String name) {
+    public String demo(@ApiParam(value = "姓名", required = true, example = "村雨遥") @RequestBody String name) {
         return "hello," + name;
     }
 }
