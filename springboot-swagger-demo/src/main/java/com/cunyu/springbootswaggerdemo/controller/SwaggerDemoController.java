@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,7 +35,7 @@ public class SwaggerDemoController {
 
     @ApiOperation(value = "有参接口")
     @PostMapping("demo")
-    public String demo(@ApiParam(name = "name", value = "村雨遥", required = true) String name) {
+    public String demo(@ApiParam(name = "name", value = "村雨遥", required = true) @RequestBody String name) {
         return "hello," + name;
     }
 }
