@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/employee-management?characterEncoding=utf-8
+    password: "0908"
+    username: root
+#    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+        ddl-auto: update
+    show-sql: true
