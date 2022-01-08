@@ -1,4 +1,4 @@
-package com.cunyu.springbootswagger3demo.entity;
+package com.cunyu.springbootswaggerdemo.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
  *
  * @author : 村雨遥
  * @version : 1.0
- * @project : springboot-swagger3-demo
- * @package : com.cunyu.springbootswagger3demo.entity
+ * @project : springboot-swagger2-demo
+ * @package : com.cunyu.springbootswaggerdemo.entity
  * @className : User
- * @createTime : 2022/1/6 11:17
+ * @createTime : 2022/1/8 18:24
  * @email : 747731461@qq.com
  * @微信 : cunyu1024
  * @公众号 : 村雨遥
@@ -33,3 +33,4 @@ public class User {
     @ApiModelProperty(value = "年龄", required = true, example = "20")
     private Integer age;
 }
+

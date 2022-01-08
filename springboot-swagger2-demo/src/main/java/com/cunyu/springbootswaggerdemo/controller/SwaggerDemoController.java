@@ -1,5 +1,6 @@
 package com.cunyu.springbootswaggerdemo.controller;
 
+import com.cunyu.springbootswaggerdemo.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -34,8 +35,14 @@ public class SwaggerDemoController {
     }
 
     @ApiOperation(value = "有参接口")
-    @PostMapping("demo")
-    public String demo(@ApiParam(value = "姓名", required = true, example = "村雨遥") @RequestBody String name) {
+    @PostMapping("demo1")
+    public String demo1(@ApiParam(value = "姓名", required = true, example = "村雨遥") @RequestBody String name) {
         return "hello," + name;
+    }
+
+    @ApiOperation(value = "有参接口")
+    @PostMapping("demo2")
+    public String demo2(@ApiParam(value = "用户对象", required = true) @RequestBody User user) {
+        return "hello," + user.getName();
     }
 }
