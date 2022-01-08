@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+swagger:
+  enabled: true
+
+spring:
+  application:
+    name: springbooot-swagger3-demo

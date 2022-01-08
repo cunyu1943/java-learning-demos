@@ -59,6 +59,11 @@ public class UserController {
         userRepository.save(user);
     }
 
+    /**
+     * 查询所有用户
+     *
+     * @return
+     */
     @PostMapping("/query")
     public List<User> queryUsers() {
         List<User> userList = userRepository.findAll();
