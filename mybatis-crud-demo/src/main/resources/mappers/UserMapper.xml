@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定对应Dao/Mapper接口-->
+<mapper namespace="com.cunyu.mapper.UserMapper">
+    <insert id="insert" parameterType="com.cunyu.entity.User">
+        INSERT INTO user(id, name, password)
+        VALUES (#{id}, #{name}, #{password})
+    </insert>
+    <update id="update">
+        UPDATE user
+        SET name    =#{name},
+            password=#{password}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM user
+        WHERE id = #{id}
+    </delete>
+    <select id="query" resultType="com.cunyu.entity.User">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
+    </select>
+</mapper>
