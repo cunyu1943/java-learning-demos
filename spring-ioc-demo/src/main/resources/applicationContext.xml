@@ -12,4 +12,8 @@
              -->
         <property name="bookDao" ref="bookDao"/>
     </bean>
+    <bean id="heroDao" class="com.cunyu.dao.impl.HeroDaoImpl"/>
+    <bean id="heroService" class="com.cunyu.service.impl.HeroServiceImpl">
+        <property name="heroDao" ref="heroDao"/>
+    </bean>
 </beans>

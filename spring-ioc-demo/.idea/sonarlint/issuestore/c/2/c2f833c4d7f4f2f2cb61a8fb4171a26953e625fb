@@ -1,0 +1,6 @@
+
+l
+java:S1450"VRemove the "heroDao" field and declare it as a local variable in the relevant methods.(„„»Î
+N	java:S106"9Replace this use of System.out or System.err by a logger.(º»‹ò
+A
+java:S1068"+Remove this unused "heroDao" private field.(„„»Î
