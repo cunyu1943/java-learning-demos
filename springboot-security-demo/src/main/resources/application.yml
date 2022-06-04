@@ -1,0 +1,5 @@
+spring:
+  security:
+    user:
+      name: cunyu1943
+      password: cunyu1943@
